@@ -13,7 +13,7 @@ import org.json.simple.parser.JSONParser;
 
 import org.junit.Assert;
 
-public class PostEndpointTC {
+public class PostStepDef {
     private DefaultEnv env;
     private PostsRestClient postsRestClient;
     private Response response;

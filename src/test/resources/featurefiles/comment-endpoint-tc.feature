@@ -1,10 +1,10 @@
 Feature: Use case for validating comment's endpoint on Json Place Holder.
-  Description: Purpose of this usecase is to validate the endpoint "/comments" with different test data.
+  Description: Purpose of this usecase is to validate the endpoint (https://jsonplaceholder.typicode.com/comments) with different test data.
 
   Background: Setup steps
     Given provided the Json place holder service is up and running, create the test environment for comments endpoint.
 
-  Scenario Outline: Creating comments via endpoint
+  Scenario Outline: Creating comments via endpoint "/comments"
     When form the test input data using the following input files <comment_input_data> for comments endpoint
     Then create comment on social media and validate the response <expected_status_code> and <validate_response_body>
     Examples:
@@ -23,7 +23,7 @@ Feature: Use case for validating comment's endpoint on Json Place Holder.
       |"{\"postId\": 1, \"name\": \"comment-name-1\", \"email\": \"user@email\", \"body\": \"comment-body-1\", \"additional-field\": \"additional-field-value\"}"|201|"false"|
 
 
-  Scenario Outline: Creating comment via post endpoint
+  Scenario Outline: Creating comment via post endpoint "/posts/post_id/comments"
     When form the test input data using the following input files <comment_input_data> for comments endpoint
     Then create comment via post on social media and validate the response <post_id>, <expected_status_code> and <validate_response_body>
 
@@ -41,14 +41,14 @@ Feature: Use case for validating comment's endpoint on Json Place Holder.
     |20|"{\"name\": \"comment-name-1\", \"email\": \"user@email\", \"body\": \"comment-body-1\"}"  |201|"false"|
 
 
-  Scenario Outline: Get all comments present on social media
+  Scenario Outline: Get all comments present on social media "/comments"
     When get all the comments present in social media <expected_status_code> and validate the total comments present is <expected_total_posts>
 
     Examples:
     |expected_status_code|expected_total_posts|
     |200                 |500                 |
 
-  Scenario Outline: Get comment by id present on social media
+  Scenario Outline: Get comment by id present on social media "/comments/comment_id"
     When get the comment present in social media by comment_id <comment_id>
     And validate the received comment contains same id or not <comment_id>, <expected_status_code> and <validate_response>
 
@@ -62,7 +62,7 @@ Feature: Use case for validating comment's endpoint on Json Place Holder.
       |610   |404                   |"false"          |
       |0     |404                   |"false"          |
 
-  Scenario Outline: Get comment by post id present on social media
+  Scenario Outline: Get comment by post id present on social media "/posts/post_id/comments"
     When get the comment present in social media by post_id <post_id>
     And validate the received comment contains same post_id or not <post_id>, <expected_status_code> and <validate_response>
 
@@ -75,7 +75,7 @@ Feature: Use case for validating comment's endpoint on Json Place Holder.
     # post id which is not existing in social media (expecting 404, but receiving 200 from sample service (so keeping 200))
       |112   |200                   |"false"           |
 
-  Scenario Outline: Update comment present on social media
+  Scenario Outline: Update comment present on social media "comments/comment_id"
     When form the test input data using the following input files <comment_update_data> for comments endpoint
     Then update the comment present in social media by comment_id <comment_id> and validate the response is updated or not <expected_status_code>, <validate_response>
 
@@ -92,7 +92,8 @@ Feature: Use case for validating comment's endpoint on Json Place Holder.
     # Negative scenarios (invalid comment id,Expecting 404, but receiving 500 from sample service)
     |600|"{\"postId\": 1, \"id\":600, \"name\": \"udpated-comment-name-1\", \"email\": \"user@email\", \"body\": \"comment-body-1\"}" |500|"false"|
 
-  Scenario Outline: Delete the comment present on social media
+
+  Scenario Outline: Delete the comment present on social media "comments/comment_id"
     When delete the comment using comment_id <comment_id> and verify the response is <expected_status_code>, <validate_response>
 
     Examples:

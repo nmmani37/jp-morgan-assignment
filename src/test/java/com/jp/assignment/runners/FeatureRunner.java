@@ -6,7 +6,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        features = {"src/test/resources/featurefiles/post-endpoint-tc.feature"},
+        features = {"src/test/resources/featurefiles"},
         glue = {"com.jp.assignment.tests"},
         plugin = {
                 "html:target/html-reports/cucumber-html-report.html",

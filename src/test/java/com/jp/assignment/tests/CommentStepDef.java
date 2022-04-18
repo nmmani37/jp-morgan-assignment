@@ -12,8 +12,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.junit.Assert;
 
-public class CommentEndpointTC {
-
+public class CommentStepDef{
     private DefaultEnv env;
     private CommentsRestClient commentsRestClient;
     private Response response;
