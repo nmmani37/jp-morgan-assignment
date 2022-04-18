@@ -1,6 +1,8 @@
 package com.jp.assignment.tests;
 
+import com.jp.assignment.api.CommentsRestClient;
 import com.jp.assignment.api.PostsRestClient;
+import com.jp.assignment.cucumber.TestContext;
 import com.jp.assignment.environment.DefaultEnv;
 import com.jp.assignment.environmentconfig.TestEnvDefaults;
 import io.cucumber.java.en.And;
@@ -18,11 +20,15 @@ public class PostStepDef {
     private PostsRestClient postsRestClient;
     private Response response;
     JSONObject postJsonObject;
+    TestContext testContext;
 
-    @Given("provided the Json place holder service is up and running, create the test environment for posts endpoint.")
+    public PostStepDef(TestContext testContext){
+        this.testContext = testContext;
+    }
+
+    @Given("Create the test environment for posts endpoint.")
     public void setup(){
-        env = TestEnvDefaults.getTestEnv();
-        postsRestClient = new PostsRestClient(env);
+        postsRestClient = new PostsRestClient(testContext.getDefaultEnv());
     }
 
     @When("form the test input data using the following input files {string} for posts endpoint")

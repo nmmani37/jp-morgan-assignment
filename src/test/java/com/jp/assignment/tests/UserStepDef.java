@@ -1,9 +1,12 @@
 package com.jp.assignment.tests;
 
+import com.jp.assignment.api.CommentsRestClient;
 import com.jp.assignment.api.PostsRestClient;
 import com.jp.assignment.api.UsersRestClient;
+import com.jp.assignment.cucumber.TestContext;
 import com.jp.assignment.environment.DefaultEnv;
 import com.jp.assignment.environmentconfig.TestEnvDefaults;
+import com.jp.assignment.pojo.User;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
@@ -14,15 +17,19 @@ import org.junit.Assert;
 
 public class UserStepDef {
 
-    private DefaultEnv env;
     private UsersRestClient usersRestClient;
     private Response response;
     JSONObject userJsonObject;
 
-    @Given("provided the Json place holder service is up and running, create the test environment for users endpoint.")
+    TestContext testContext;
+
+    public UserStepDef(TestContext testContext){
+        this.testContext = testContext;
+    }
+
+    @Given("Create the test environment for users endpoint.")
     public void setup(){
-        env = TestEnvDefaults.getTestEnv();
-        usersRestClient = new UsersRestClient(env);
+        usersRestClient = new UsersRestClient(testContext.getDefaultEnv());
     }
 
     @When("form the test input data using the following input files {string} for users endpoint")

@@ -2,7 +2,8 @@ Feature: Use case for Listing the user's in different ways
   Description: Purpose of this usecase is to validate the endpoint (https://jsonplaceholder.typicode.com/users) on Json Place Holder.
 
   Background: Setup steps
-    Given provided the Json place holder service is up and running, create the test environment for users endpoint.
+    Given Set the Base url which needs to be tested "https://jsonplaceholder.typicode.com"
+    Given Create the test environment for users endpoint.
 
   Scenario Outline: Get all users present on social media "/users"
     When get all the users present in social media <expected_status_code> and validate the total users present is <expected_total_users>

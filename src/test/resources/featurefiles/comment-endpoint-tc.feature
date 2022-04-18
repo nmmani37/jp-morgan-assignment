@@ -2,7 +2,8 @@ Feature: Use case for validating comment's endpoint on Json Place Holder.
   Description: Purpose of this usecase is to validate the endpoint (https://jsonplaceholder.typicode.com/comments) with different test data.
 
   Background: Setup steps
-    Given provided the Json place holder service is up and running, create the test environment for comments endpoint.
+    Given Set the Base url which needs to be tested "https://jsonplaceholder.typicode.com"
+    Given Create the test environment for comments endpoint.
 
   Scenario Outline: Creating comments via endpoint "/comments"
     When form the test input data using the following input files <comment_input_data> for comments endpoint

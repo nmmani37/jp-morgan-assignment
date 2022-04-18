@@ -12,7 +12,7 @@ public class RestAssuredClient {
     protected Response response;
 
     public RestAssuredClient(DefaultEnv env){
-        this.baseUrl = env.getURL();
+        this.baseUrl = env.getTheURL();
     }
 
     protected Response getFromJsonPlaceHolder(String endPoint){

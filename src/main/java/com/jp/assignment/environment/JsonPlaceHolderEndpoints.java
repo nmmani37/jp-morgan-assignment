@@ -25,5 +25,4 @@ public class JsonPlaceHolderEndpoints {
     public static String getUsersViaComments(String commentId){
         return String.format(usersViaComments, commentId);
     }
-
 }
