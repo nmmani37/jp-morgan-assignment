@@ -10,34 +10,44 @@ public class CommentsRestClient extends RestAssuredClient {
         super(env);
     }
 
-    /**
-     *
-     * @param msg
-     * @return
-     */
-    public Response commentOnPost(String msg){
-        Response response = postToJsonPlaceHolder(commentEndPoint, msg);
+    public Response createComment(String body){
+        Response response = postToJsonPlaceHolder(commentEndPoint, body);
         return response;
     }
 
-     /*public Response getAllCommentsOnPost(){
-
+    public Response createCommentViaPost(int post_id, String body){
+        Response response = postToJsonPlaceHolder(JsonPlaceHolderEndpoints.getCommentsViaPosts(String.valueOf(post_id)), body);
+        return response;
     }
 
-    public Response getCommentWithFilters(List<String> filters ){
+    public Response getAllComments(){
+        Response response = getFromJsonPlaceHolder(commentEndPoint);
+        return response;
+    }
 
+    public Response getCommentById(int comment_id){
+        Response response = getFromJsonPlaceHolder(commentEndPoint+"/"+comment_id);
+        return response;
+    }
+
+    public Response getCommentByPostId(int post_id){
+        Response response = getFromJsonPlaceHolder(JsonPlaceHolderEndpoints.getCommentsViaPosts(String.valueOf(post_id)));
+        return response;
     }
 
 
-    public Response updateComment(){
-
+    public Response updateComment(int comment_id, String updateMsg){
+        Response response = putToJsonPlaceHolder(commentEndPoint+"/"+comment_id, updateMsg);
+        return response;
     }
 
-    public Response patchComment(){
-
-    }
-
-    public Response deleteComment(){
+    /*public Response patchPost(){
 
     }*/
+
+    public Response deleteComment(int comment_id){
+        Response response = deleteFromJsonPlaceHolder(commentEndPoint+"/"+comment_id);
+        return response;
+    }
+
 }

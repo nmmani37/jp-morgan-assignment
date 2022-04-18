@@ -25,7 +25,7 @@ public class RestAssuredClient {
 
         if( response.statusCode()!=200 && response.statusCode()!=401 &&
                 response.statusCode()!=409 && response.statusCode()!=302){
-            System.out.println("POTENTIAL BUG - " + response.statusCode() + " FOR " + endPoint );
+            //System.out.println("POTENTIAL BUG - " + response.statusCode() + " FOR " + endPoint );
         }
 
         return response;
@@ -43,7 +43,7 @@ public class RestAssuredClient {
 
         if( response.statusCode()!=201 && response.statusCode()!=401 &&
                 response.statusCode()!=409 && response.statusCode()!=302){
-            System.out.println("POTENTIAL BUG - " + response.statusCode() + " FOR " + endPoint + "\n" + msg );
+            //System.out.println("POTENTIAL BUG - " + response.statusCode() + " FOR " + endPoint + "\n" + msg );
         }
 
         return response;
@@ -62,7 +62,7 @@ public class RestAssuredClient {
 
         if( response.statusCode()!=201 && response.statusCode()!=401 &&
                 response.statusCode()!=409 && response.statusCode()!=302){
-            System.out.println("POTENTIAL BUG - " + response.statusCode() + " FOR " + endPoint + "\n" + msg );
+            //System.out.println("POTENTIAL BUG - " + response.statusCode() + " FOR " + endPoint + "\n" + msg );
         }
 
         return response;
@@ -81,7 +81,7 @@ public class RestAssuredClient {
 
         if( response.statusCode()!=201 && response.statusCode()!=401 &&
                 response.statusCode()!=409 && response.statusCode()!=302){
-            System.out.println("POTENTIAL BUG - " + response.statusCode() + " FOR " + endPoint + "\n" + msg );
+            //System.out.println("POTENTIAL BUG - " + response.statusCode() + " FOR " + endPoint + "\n" + msg );
         }
 
         return response;
@@ -97,7 +97,7 @@ public class RestAssuredClient {
 
         if( response.statusCode()!=201 && response.statusCode()!=401 &&
                 response.statusCode()!=409 && response.statusCode()!=302){
-            System.out.println("POTENTIAL BUG - " + response.statusCode() + " FOR " + endPoint );
+            //System.out.println("POTENTIAL BUG - " + response.statusCode() + " FOR " + endPoint );
         }
 
         return response;
@@ -114,7 +114,5 @@ public class RestAssuredClient {
             return null;
         }
     }
-
-
 
 }

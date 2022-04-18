@@ -2,10 +2,10 @@ Feature: Use case for validating post's endpoint on Json Place Holder.
   Description: Purpose of this usecase is to validate the endpoint "/posts" with different test data.
 
   Background: Setup steps
-    Given provided the Json place holder service is up and running, create the test environment.
+    Given provided the Json place holder service is up and running, create the test environment for posts endpoint.
 
   Scenario Outline: Creating post via the endpoint posts
-    When form the test input data using the following input files <post_input_data>
+    When form the test input data using the following input files <post_input_data> for posts endpoint
     Then create post on social media and validate the response <expected_status_code> and <validate_response_body>
     Examples:
       |post_input_data|expected_status_code|validate_response_body|
@@ -24,7 +24,7 @@ Feature: Use case for validating post's endpoint on Json Place Holder.
 
 
   Scenario Outline: Creating post via user endpoint
-    When form the test input data using the following input files <post_input_data>
+    When form the test input data using the following input files <post_input_data> for posts endpoint
     Then create post via user on social media and validate the response <user_id>, <expected_status_code> and <validate_response_body>
 
     Examples:
@@ -76,7 +76,7 @@ Feature: Use case for validating post's endpoint on Json Place Holder.
       |12   |200                   |"false"           |
 
   Scenario Outline: Update post present on social media
-    When form the test input data using the following input files <post_update_data>
+    When form the test input data using the following input files <post_update_data> for posts endpoint
     Then update the post present in social media by post_id <post_id> and validate the response is updated or not <expected_status_code>, <validate_response>
 
     Examples:
