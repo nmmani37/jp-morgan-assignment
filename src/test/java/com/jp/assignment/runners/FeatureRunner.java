@@ -9,6 +9,7 @@ import org.junit.runner.RunWith;
         features = {"src/test/resources/featurefiles"},
         glue = {"com.jp.assignment.tests"},
         plugin = {
+                "com.jp.assignment.cucumber.ListenerPlugin",
                 "html:target/html-reports/cucumber-html-report.html",
                 "json:target/json-reports/cucumber-json-report.json",
                 "usage:target/cucumber-usage.json",

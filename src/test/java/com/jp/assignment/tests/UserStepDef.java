@@ -1,16 +1,14 @@
 package com.jp.assignment.tests;
 
-import com.jp.assignment.api.CommentsRestClient;
-import com.jp.assignment.api.PostsRestClient;
 import com.jp.assignment.api.UsersRestClient;
-import com.jp.assignment.cucumber.TestContext;
-import com.jp.assignment.environment.DefaultEnv;
-import com.jp.assignment.environmentconfig.TestEnvDefaults;
-import com.jp.assignment.pojo.User;
+import com.jp.assignment.cucumber.ListenerPlugin;
+import com.jp.assignment.cucumber.TestContext;;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import io.restassured.response.Response;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.junit.Assert;
@@ -21,6 +19,7 @@ public class UserStepDef {
     private Response response;
     JSONObject userJsonObject;
 
+    private static final Logger LOG = LogManager.getLogger(ListenerPlugin.class);
     TestContext testContext;
 
     public UserStepDef(TestContext testContext){

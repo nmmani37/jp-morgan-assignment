@@ -1,25 +1,27 @@
 package com.jp.assignment.tests;
 
-import com.jp.assignment.api.CommentsRestClient;
 import com.jp.assignment.api.PostsRestClient;
+import com.jp.assignment.cucumber.ListenerPlugin;
 import com.jp.assignment.cucumber.TestContext;
 import com.jp.assignment.environment.DefaultEnv;
-import com.jp.assignment.environmentconfig.TestEnvDefaults;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.restassured.response.Response;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 import org.junit.Assert;
 
 public class PostStepDef {
-    private DefaultEnv env;
     private PostsRestClient postsRestClient;
     private Response response;
     JSONObject postJsonObject;
+
+    private static final Logger LOG = LogManager.getLogger(ListenerPlugin.class);
     TestContext testContext;
 
     public PostStepDef(TestContext testContext){

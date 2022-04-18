@@ -1,13 +1,15 @@
 package com.jp.assignment.tests;
 
 import com.jp.assignment.api.CommentsRestClient;
+import com.jp.assignment.cucumber.ListenerPlugin;
 import com.jp.assignment.cucumber.TestContext;
-import com.jp.assignment.environment.DefaultEnv;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.restassured.response.Response;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.junit.Assert;
@@ -17,6 +19,8 @@ public class CommentStepDef{
     private CommentsRestClient commentsRestClient;
     private Response response;
     JSONObject commentJsonObject;
+
+    private static final Logger LOG = LogManager.getLogger(ListenerPlugin.class);
     TestContext testContext;
 
     public CommentStepDef(TestContext testContext){
@@ -38,7 +42,6 @@ public class CommentStepDef{
         } catch(Exception e) {
             e.printStackTrace();
         }
-
     }
 
     @Then("create comment on social media and validate the response {int} and {string}")
